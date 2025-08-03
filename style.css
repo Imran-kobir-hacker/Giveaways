@@ -786,18 +786,26 @@ body {
 /* Logo Section */
 .logo-container {
   width: 100%;
-  padding: 20px 0;
-  margin-top: 20px; /* reduced top space */
+  padding: 30px 0;
+  margin-top: 20px;
   text-align: center;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  margin: 20px auto;
+  max-width: 90%;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.3);
 }
 
 .logo-image {
-  width: 60%; /* make smaller */
-  max-width: 250px;
+  width: 80%; /* make bigger */
+  max-width: 400px;
   height: auto;
   border-radius: 15px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
   transition: transform 0.3s ease;
+  filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.2));
 }
 
 .logo-image:hover {
@@ -1339,6 +1347,17 @@ body {
     width: 45px;
     height: 45px;
     font-size: 16px;
+  }
+
+  .logo-container {
+    padding: 20px 0;
+    max-width: 95%;
+    margin: 15px auto;
+  }
+
+  .logo-image {
+    width: 90%;
+    max-width: 300px;
   }
 }
 
