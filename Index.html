@@ -1,75 +1,320 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MegaPersonals Babylon Giveaway</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>আপনার ব্যবসার নাম - আধুনিক ওয়েব সমাধান</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!-- Animated Background -->
-  <div class="background-animation">
-    <div class="balloon balloon1">🎈</div>
-    <div class="balloon balloon2">🎈</div>
-    <div class="balloon balloon3">🎈</div>
-    <div class="balloon balloon4">🎊</div>
-    <div class="balloon balloon5">🎉</div>
-  </div>
-
-  <!-- Notification -->
-  <div class="notification-bar">
-    <div id="notification-text">7907**** claim successful</div>
-  </div>
-
-  <div class="container">
-    <!-- Logo -->
-    <div class="logo-container">
-      <img src="your-logo.png" alt="MegaPersonals Logo" class="logo-image" />
-    </div>
-
-    <!-- Main Content -->
-    <div class="content-wrapper">
-      <!-- Headings -->
-      <h2 class="main-title">MegaPersonals Babylon Network</h2>
-      <div class="emoji-header">🎊 Congratulations! You've Been Chosen! 🎊</div>
-
-      <!-- Info Box -->
-      <div class="info-box">
-        <p class="highlight-text">
-          From thousands of verified members, <strong>50 real individuals</strong> were selected through a secure screening by <strong>MegaPersonals Babylon Network</strong> — and <strong>you are one of the lucky winners!</strong>
-        </p>
-        <p class="prize-text">🎉 You've officially been awarded a <strong>$1200 Giveaway</strong>.</p>
-        <p class="verification-title">✅ What makes this real:</p>
-        <ul class="verification-list">
-          <li>✔ Individually verified</li>
-          <li>✔ No hidden fees</li>
-          <li>✔ Babylon Network's official campaign</li>
-          <li>✔ Confirmed by real validation</li>
-        </ul>
-        <p class="guarantee-text">🎁 This is a genuine reward — not a raffle, not luck, but a verified giveaway.</p>
-        <p class="urgency-text">🕒 Act fast! This reward must be claimed within the limited campaign window.</p>
-        <a href="https://giveaway-babylon.netlify.app/" class="cta-button">👉 Confirm & Claim $1200 Now</a>
-      </div>
-
-      <!-- Claim History -->
-      <div class="history-box">
-        <h3 class="history-heading">📋 Recent Claim History</h3>
-        <div class="history-container">
-          <table class="history-table">
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>PayPal</th>
-                <th>Status</th>
-              </tr>
-            </thead>
-            <tbody id="claim-history-body"></tbody>
-          </table>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-code"></i>
+                <span>DigitalPro</span>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="#home" class="nav-link">হোম</a>
+                <a href="#about" class="nav-link">সম্পর্কে</a>
+                <a href="#services" class="nav-link">সেবা</a>
+                <a href="#portfolio" class="nav-link">পোর্টফোলিও</a>
+                <a href="#contact" class="nav-link">যোগাযোগ</a>
+            </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
         </div>
-      </div>
-    </div>
-  </div>
+    </nav>
 
-  <script src="script.js"></script>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-background">
+            <div class="floating-shapes">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+                <div class="shape shape-3"></div>
+                <div class="shape shape-4"></div>
+            </div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">
+                    <span class="title-main">আধুনিক ওয়েব ডিজাইন</span>
+                    <span class="title-sub">যা আপনার ব্যবসাকে এগিয়ে নিয়ে যায়</span>
+                </h1>
+                <p class="hero-description">
+                    আমরা তৈরি করি দৃষ্টিনন্দন, ব্যবহারকারী-বান্ধব এবং কার্যকর ওয়েবসাইট যা আপনার ব্র্যান্ডের গল্প বলে এবং গ্রাহকদের আকৃষ্ট করে।
+                </p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-primary">
+                        <i class="fas fa-rocket"></i>
+                        প্রকল্প শুরু করুন
+                    </a>
+                    <a href="#portfolio" class="btn btn-secondary">
+                        <i class="fas fa-eye"></i>
+                        কাজ দেখুন
+                    </a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-card">
+                    <div class="card-header">
+                        <div class="card-dots">
+                            <span class="dot red"></span>
+                            <span class="dot yellow"></span>
+                            <span class="dot green"></span>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="code-line">
+                            <span class="code-comment">/* আপনার স্বপ্নের ওয়েবসাইট */</span>
+                        </div>
+                        <div class="code-line">
+                            <span class="code-keyword">function</span> 
+                            <span class="code-function">createWebsite</span>() {
+                        </div>
+                        <div class="code-line code-indent">
+                            <span class="code-keyword">return</span> 
+                            <span class="code-string">"সুন্দর ও কার্যকর"</span>;
+                        </div>
+                        <div class="code-line">}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">আমাদের সম্পর্কে</h2>
+                <p class="section-subtitle">আমরা কে এবং কেন আমাদের বেছে নেবেন</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>আমাদের মিশন</h3>
+                    <p>আমরা বিশ্বাস করি যে প্রতিটি ব্যবসার একটি অনন্য ডিজিটাল পরিচয় থাকা উচিত। আমাদের লক্ষ্য হল আপনার ব্র্যান্ডের জন্য এমন একটি ওয়েবসাইট তৈরি করা যা শুধু দেখতে সুন্দর নয়, বরং ব্যবহারকারীদের অভিজ্ঞতাও অসাধারণ।</p>
+                    <div class="stats">
+                        <div class="stat">
+                            <h4>১০০+</h4>
+                            <p>সন্তুষ্ট গ্রাহক</p>
+                        </div>
+                        <div class="stat">
+                            <h4>৫০০+</h4>
+                            <p>সম্পন্ন প্রকল্প</p>
+                        </div>
+                        <div class="stat">
+                            <h4>৯৮%</h4>
+                            <p>সফলতার হার</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-visual">
+                    <div class="visual-card">
+                        <i class="fas fa-palette"></i>
+                        <h4>ক্রিয়েটিভ ডিজাইন</h4>
+                    </div>
+                    <div class="visual-card">
+                        <i class="fas fa-mobile-alt"></i>
+                        <h4>রেসপন্সিভ লেআউট</h4>
+                    </div>
+                    <div class="visual-card">
+                        <i class="fas fa-rocket"></i>
+                        <h4>দ্রুত লোডিং</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">আমাদের সেবাসমূহ</h2>
+                <p class="section-subtitle">আপনার ডিজিটাল উপস্থিতি শক্তিশালী করার জন্য সম্পূর্ণ সমাধান</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>ওয়েব ডেভেলপমেন্ট</h3>
+                    <p>আধুনিক প্রযুক্তি ব্যবহার করে দ্রুত, নিরাপদ এবং স্কেলেবল ওয়েবসাইট তৈরি করি।</p>
+                    <ul>
+                        <li>রেসপন্সিভ ডিজাইন</li>
+                        <li>ই-কমার্স সমাধান</li>
+                        <li>কাস্টম অ্যাপ্লিকেশন</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3>UI/UX ডিজাইন</h3>
+                    <p>ব্যবহারকারী-কেন্দ্রিক ডিজাইন যা আপনার গ্রাহকদের অভিজ্ঞতা উন্নত করে।</p>
+                    <ul>
+                        <li>ইন্টারঅ্যাকটিভ প্রোটোটাইপ</li>
+                        <li>ব্র্যান্ড আইডেন্টিটি</li>
+                        <li>ইউজার রিসার্চ</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>SEO অপটিমাইজেশন</h3>
+                    <p>সার্চ ইঞ্জিনে আপনার ওয়েবসাইটের র‍্যাঙ্কিং উন্নত করে বেশি ভিজিটর আনুন।</p>
+                    <ul>
+                        <li>কীওয়ার্ড রিসার্চ</li>
+                        <li>টেকনিক্যাল SEO</li>
+                        <li>পারফরম্যান্স ট্র্যাকিং</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">আমাদের কাজ</h2>
+                <p class="section-subtitle">সফল প্রকল্পের কিছু উদাহরণ</p>
+            </div>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgdmlld0JveD0iMCAwIDQwMCAzMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI0MDAiIGhlaWdodD0iMzAwIiBmaWxsPSIjNDMzOGNhIi8+Cjx0ZXh0IHg9IjIwMCIgeT0iMTUwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjQiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSI+QW4gdGVhbCA/PC90ZXh0Pgo8L3N2Zz4=" alt="প্রকল্প ১">
+                        <div class="portfolio-overlay">
+                            <h4>ই-কমার্স প্ল্যাটফর্ম</h4>
+                            <p>আধুনিক অনলাইন শপিং অভিজ্ঞতা</p>
+                            <a href="#" class="btn btn-primary">বিস্তারিত দেখুন</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgdmlld0JveD0iMCAwIDQwMCAzMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI0MDAiIGhlaWdodD0iMzAwIiBmaWxsPSIjMTBlN2ZmIi8+Cjx0ZXh0IHg9IjIwMCIgeT0iMTUwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjQiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSI+Qm5hZiBmb28 ?PC90ZXh0Pgo8L3N2Zz4=" alt="প্রকল্প ২">
+                        <div class="portfolio-overlay">
+                            <h4>কর্পোরেট ওয়েবসাইট</h4>
+                            <p>পেশাদার ব্যবসায়িক উপস্থিতি</p>
+                            <a href="#" class="btn btn-primary">বিস্তারিত দেখুন</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgdmlld0JveD0iMCAwIDQwMCAzMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI0MDAiIGhlaWdodD0iMzAwIiBmaWxsPSIjZmY2YzQyIi8+Cjx0ZXh0IHg9IjIwMCIgeT0iMTUwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjQiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSI+Qm8gJnF1b3Q7dCBsb3JlbSBhIGRvbG9yPC90ZXh0Pgo8L3N2Zz4=" alt="প্রকল্প ৩">
+                        <div class="portfolio-overlay">
+                            <h4>মোবাইল অ্যাপ</h4>
+                            <p>ইউজার-ফ্রেন্ডলি মোবাইল সমাধান</p>
+                            <a href="#" class="btn btn-primary">বিস্তারিত দেখুন</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">যোগাযোগ করুন</h2>
+                <p class="section-subtitle">আপনার প্রকল্প নিয়ে আলোচনা করতে প্রস্তুত?</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>ঠিকানা</h4>
+                            <p>ঢাকা, বাংলাদেশ</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>ফোন</h4>
+                            <p>+880 1XXX-XXXXXX</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>ইমেইল</h4>
+                            <p>info@digitalpro.com</p>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <div class="form-group">
+                        <input type="text" placeholder="আপনার নাম" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="ইমেইল ঠিকানা" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" placeholder="বিষয়" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="আপনার বার্তা" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-paper-plane"></i>
+                        বার্তা পাঠান
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <i class="fas fa-code"></i>
+                        <span>DigitalPro</span>
+                    </div>
+                    <p>আধুনিক ওয়েব সমাধানের বিশ্বস্ত অংশীদার</p>
+                </div>
+                <div class="footer-links">
+                    <h4>দ্রুত লিংক</h4>
+                    <a href="#home">হোম</a>
+                    <a href="#about">সম্পর্কে</a>
+                    <a href="#services">সেবা</a>
+                    <a href="#portfolio">পোর্টফোলিও</a>
+                </div>
+                <div class="footer-contact">
+                    <h4>যোগাযোগ</h4>
+                    <p>ঢাকা, বাংলাদেশ</p>
+                    <p>info@digitalpro.com</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; ২০২৪ DigitalPro। সব অধিকার সংরক্ষিত।</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
