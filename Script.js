@@ -73,25 +73,93 @@ function generateMaskedEmail() {
   return `${startLetter}${stars}@${domain}`;
 }
 
-// Enhanced notification messages with more variety
+// Enhanced Custom notification system with unified beautiful design
+function showCustomNotification(message, type = 'info', duration = 5000, showClose = true) {
+  const notification = document.createElement('div');
+  notification.className = `custom-notification ${type}`;
+  
+  // Enhanced icon mapping with beautiful emojis
+  const iconMap = {
+    'success': '🎉',
+    'info': '💎',
+    'warning': '⭐',
+    'error': '💫',
+    'claim': '🏆'
+  };
+  
+  notification.innerHTML = `
+    <div class="notification-content">
+      <span class="notification-icon">${iconMap[type] || iconMap['info']}</span>
+      <span class="notification-message">${message}</span>
+    </div>
+    ${showClose ? '<button class="notification-close" onclick="closeNotification(this)">×</button>' : ''}
+  `;
+  
+  document.body.appendChild(notification);
+  
+  // Add pulse effect for all notifications to make them more beautiful
+  notification.classList.add('pulse');
+  
+  // Animate in with slight delay for better effect
+  setTimeout(() => {
+    notification.classList.add('show');
+  }, 50);
+  
+  // Auto-remove after duration
+  const autoRemoveTimeout = setTimeout(() => {
+    removeNotification(notification);
+  }, duration);
+  
+  // Store timeout for manual close
+  notification.autoRemoveTimeout = autoRemoveTimeout;
+  
+  return notification;
+}
+
+// Special claim button notification function
+function showClaimNotification() {
+  const claimMessages = [
+    '🎉 Congratulations! Your claim is being processed!',
+    '🏆 You\'ve successfully initiated your $1,200 claim!',
+    '💎 Your reward claim has been submitted successfully!',
+    '⭐ Welcome to the winners circle! Claiming your prize...',
+    '🎊 Your $1,200 giveaway claim is now active!'
+  ];
+  
+  const randomMessage = claimMessages[Math.floor(Math.random() * claimMessages.length)];
+  
+  // Show the claim notification with longer duration
+  showCustomNotification(randomMessage, 'claim', 8000, false);
+  
+  // Show additional success notifications after a delay
+  setTimeout(() => {
+    showCustomNotification('✅ Verification completed successfully!', 'success', 6000);
+  }, 2000);
+  
+  setTimeout(() => {
+    showCustomNotification('💰 Your $1,200 reward is being transferred!', 'success', 6000);
+  }, 4000);
+}
+
+// Enhanced notification messages with more variety and beautiful design
 const enhancedNotificationMessages = [
   {
     type: 'success',
     templates: [
-      '{email} just received $1,200! 🎉',
-      '{email} successfully claimed $1,200 reward! ✅',
-      '{email} verified and received $1,200! 💰',
-      '{email} completed claim for $1,200! 🏆',
-      '{email} just won $1,200 giveaway! 🎊'
+      '🎉 {email} just received $1,200!',
+      '🏆 {email} successfully claimed $1,200 reward!',
+      '💎 {email} verified and received $1,200!',
+      '⭐ {email} completed claim for $1,200!',
+      '🎊 {email} just won $1,200 giveaway!'
     ]
   },
   {
     type: 'activity', 
     templates: [
-      '{email} is verifying their claim...',
-      '{email} just joined the giveaway!',
-      '{email} is completing verification...',
-      'New member {email} just qualified!'
+      '💫 {email} is verifying their claim...',
+      '✨ {email} just joined the giveaway!',
+      '🌟 {email} is completing verification...',
+      '💎 New member {email} just qualified!'
     ]
   }
 ];
@@ -177,50 +245,6 @@ function addNewClaim() {
   return newClaim;
 }
 
-// Enhanced Custom notification system with megapersonals.eu inspired styling
-function showCustomNotification(message, type = 'info', duration = 5000, showClose = true) {
-  const notification = document.createElement('div');
-  notification.className = `custom-notification ${type}`;
-  
-  // Enhanced icon mapping with more variety
-  const iconMap = {
-    'success': '✅',
-    'info': 'ℹ️',
-    'warning': '⚠️',
-    'error': '❌'
-  };
-  
-  notification.innerHTML = `
-    <div class="notification-content">
-      <span class="notification-icon">${iconMap[type] || iconMap['info']}</span>
-      <span class="notification-message">${message}</span>
-    </div>
-    ${showClose ? '<button class="notification-close" onclick="closeNotification(this)">×</button>' : ''}
-  `;
-  
-  document.body.appendChild(notification);
-  
-  // Add pulse effect for important notifications
-  if (type === 'success' || type === 'error') {
-    notification.classList.add('pulse');
-  }
-  
-  // Animate in with slight delay for better effect
-  setTimeout(() => {
-    notification.classList.add('show');
-  }, 50);
-  
-  // Auto-remove after duration
-  const autoRemoveTimeout = setTimeout(() => {
-    removeNotification(notification);
-  }, duration);
-  
-  // Store timeout for manual close
-  notification.autoRemoveTimeout = autoRemoveTimeout;
-  
-  return notification;
-}
-
 // Function to close notification manually
 function closeNotification(closeButton) {
   const notification = closeButton.closest('.custom-notification');
@@ -242,21 +266,21 @@ function removeNotification(notification) {
   }, 400);
 }
 
-// Demo functions to showcase different notification types
+// Demo functions to showcase different notification types with beautiful design
 function showSuccessNotification() {
   showCustomNotification('🎉 Congratulations! Your account has been verified successfully!', 'success', 6000);
 }
 
 function showInfoNotification() {
-  showCustomNotification('💡 New features are being added regularly. Stay tuned for updates!', 'info', 4000);
+  showCustomNotification('💎 New features are being added regularly. Stay tuned for updates!', 'info', 4000);
 }
 
 function showWarningNotification() {
-  showCustomNotification('⚠️ Please complete your profile to unlock all features.', 'warning', 5000);
+  showCustomNotification('⭐ Please complete your profile to unlock all features.', 'warning', 5000);
 }
 
 function showErrorNotification() {
-  showCustomNotification('❌ Connection error. Please check your internet and try again.', 'error', 6000);
+  showCustomNotification('💫 Connection error. Please check your internet and try again.', 'error', 6000);
 }
 
 // Enhanced Animated Notification Text with dynamic updates
@@ -360,6 +384,7 @@ function enhanceCTAButton() {
     setTimeout(() => {
       ctaButton.style.transform = 'scale(1)';
     }, 150);
+    showClaimNotification(); // Trigger the special claim notification
   });
 }
 
