@@ -54,18 +54,26 @@ function showLiveChat() {
   alert('Live chat feature coming soon! For now, please use the claim button to proceed.');
 }
 
+// Function to mask email addresses
+function maskEmail(email) {
+  const [localPart, domain] = email.split('@');
+  const firstChar = localPart.charAt(0);
+  const maskedLocalPart = firstChar + '*'.repeat(localPart.length - 1);
+  return `${maskedLocalPart}@${domain}`;
+}
+
 // Enhanced Claim History
 const claimHistory = [
-  { id: '7907****', paypal: 'sarah.m@paypal.com', status: 'approved' },
-  { id: '8923****', paypal: 'mike.r@paypal.com', status: 'approved' },
-  { id: '4567****', paypal: 'emma.l@paypal.com', status: 'approved' },
-  { id: '2345****', paypal: 'john.d@paypal.com', status: 'approved' },
-  { id: '6789****', paypal: 'lisa.k@paypal.com', status: 'approved' },
-  { id: '3456****', paypal: 'david.w@paypal.com', status: 'approved' },
-  { id: '7890****', paypal: 'anna.b@paypal.com', status: 'approved' },
-  { id: '1234****', paypal: 'tom.h@paypal.com', status: 'approved' },
-  { id: '5678****', paypal: 'mary.j@paypal.com', status: 'approved' },
-  { id: '9012****', paypal: 'peter.s@paypal.com', status: 'pending' }
+  { id: '7907****', paypal: 'sarah.m@gmail.com', status: 'approved' },
+  { id: '8923****', paypal: 'mike.r@yahoo.com', status: 'approved' },
+  { id: '4567****', paypal: 'emma.l@hotmail.com', status: 'approved' },
+  { id: '2345****', paypal: 'john.d@gmail.com', status: 'approved' },
+  { id: '6789****', paypal: 'lisa.k@yahoo.com', status: 'approved' },
+  { id: '3456****', paypal: 'david.w@hotmail.com', status: 'approved' },
+  { id: '7890****', paypal: 'anna.b@gmail.com', status: 'approved' },
+  { id: '1234****', paypal: 'tom.h@yahoo.com', status: 'approved' },
+  { id: '5678****', paypal: 'mary.j@hotmail.com', status: 'approved' },
+  { id: '9012****', paypal: 'peter.s@gmail.com', status: 'pending' }
 ];
 
 function populateClaimHistory() {
@@ -76,7 +84,7 @@ function populateClaimHistory() {
     const row = document.createElement('tr');
     row.innerHTML = `
       <td>${claim.id}</td>
-      <td>${claim.paypal}</td>
+      <td>${maskEmail(claim.paypal)}</td>
       <td><span class="status ${claim.status}">${claim.status.toUpperCase()}</span></td>
     `;
     tbody.appendChild(row);
