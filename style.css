@@ -273,28 +273,54 @@ body {
   z-index: 1;
 }
 
-/* Enhanced Notification Bar */
+/* Enhanced Notification Bar - MegaPersonals Style */
 .notification-bar {
-  background: linear-gradient(45deg, rgba(0, 0, 0, 0.95), rgba(0, 78, 146, 0.8));
-  color: #fff;
-  padding: 12px;
+  background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460, #533483);
+  background-size: 400% 400%;
+  animation: notificationGradient 8s ease infinite;
+  color: #ffffff;
+  padding: 15px 20px;
   text-align: center;
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 1000;
-  border-bottom: 2px solid rgba(255, 215, 0, 0.3);
-  backdrop-filter: blur(15px);
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+  border-bottom: 3px solid #ff6b35;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+  font-family: 'Arial', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+@keyframes notificationGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 #notification-text {
   display: inline-block;
-  animation: slideText 25s linear infinite;
+  animation: slideText 30s linear infinite;
   white-space: nowrap;
-  padding-right: 100px;
-  font-weight: 500;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  padding-right: 120px;
+  font-weight: 600;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  font-size: 16px;
+  position: relative;
+  transition: opacity 0.5s ease;
+}
+
+#notification-text::before {
+  content: '🔔';
+  margin-right: 10px;
+  animation: bellRing 2s ease-in-out infinite;
+}
+
+@keyframes bellRing {
+  0%, 100% { transform: rotate(0deg); }
+  10%, 30%, 50%, 70%, 90% { transform: rotate(10deg); }
+  20%, 40%, 60%, 80% { transform: rotate(-10deg); }
 }
 
 @keyframes slideText {
@@ -303,6 +329,43 @@ body {
   }
   100% {
     transform: translateX(-100%);
+  }
+}
+
+/* Additional notification enhancements */
+.notification-bar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  animation: notificationShine 3s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes notificationShine {
+  0% { transform: translateX(-100%); }
+  50% { transform: translateX(100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* Mobile responsive notification */
+@media (max-width: 768px) {
+  .notification-bar {
+    padding: 12px 15px;
+    font-size: 14px;
+  }
+  
+  #notification-text {
+    font-size: 14px;
+    padding-right: 80px;
+  }
+  
+  #notification-text::before {
+    font-size: 14px;
+    margin-right: 8px;
   }
 }
 
