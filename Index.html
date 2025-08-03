@@ -2,56 +2,71 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MegaPersonals Babylon Giveaway</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <!-- Animated Background -->
+  <div class="background-animation">
+    <div class="balloon balloon1">🎈</div>
+    <div class="balloon balloon2">🎈</div>
+    <div class="balloon balloon3">🎈</div>
+    <div class="balloon balloon4">🎊</div>
+    <div class="balloon balloon5">🎉</div>
+  </div>
+
   <!-- Notification -->
   <div class="notification-bar">
     <div id="notification-text">7907**** claim successful</div>
   </div>
 
-  <!-- Logo -->
-  <div class="logo">
-    <img src="your-logo.png" alt="MegaPersonals Logo" />
-  </div>
+  <div class="container">
+    <!-- Logo -->
+    <div class="logo-container">
+      <img src="your-logo.png" alt="MegaPersonals Logo" class="logo-image" />
+    </div>
 
-  <!-- Headings -->
-  <h2>MegaPersonals Babylon Network</h2>
-  <div class="emoji">🎊 Congratulations! You've Been Chosen! 🎊</div>
+    <!-- Main Content -->
+    <div class="content-wrapper">
+      <!-- Headings -->
+      <h2 class="main-title">MegaPersonals Babylon Network</h2>
+      <div class="emoji-header">🎊 Congratulations! You've Been Chosen! 🎊</div>
 
-  <!-- Info Box -->
-  <div class="info-box">
-    <p>
-      From thousands of verified members, <strong>50 real individuals</strong> were selected through a secure screening by <strong>MegaPersonals Babylon Network</strong> — and <strong>you are one of the lucky winners!</strong>
-    </p>
-    <p>🎉 You’ve officially been awarded a <strong>$1200 Giveaway</strong>.</p>
-    <p>✅ What makes this real:</p>
-    <ul>
-      <li>✔ Individually verified</li>
-      <li>✔ No hidden fees</li>
-      <li>✔ Babylon Network’s official campaign</li>
-      <li>✔ Confirmed by real validation</li>
-    </ul>
-    <p>🎁 This is a genuine reward — not a raffle, not luck, but a verified giveaway.</p>
-    <p>🕒 Act fast! This reward must be claimed within the limited campaign window.</p>
-    <a href="https://giveaway-babylon.netlify.app/" class="cta-button">👉 Confirm & Claim $1200 Now</a>
-  </div>
+      <!-- Info Box -->
+      <div class="info-box">
+        <p class="highlight-text">
+          From thousands of verified members, <strong>50 real individuals</strong> were selected through a secure screening by <strong>MegaPersonals Babylon Network</strong> — and <strong>you are one of the lucky winners!</strong>
+        </p>
+        <p class="prize-text">🎉 You've officially been awarded a <strong>$1200 Giveaway</strong>.</p>
+        <p class="verification-title">✅ What makes this real:</p>
+        <ul class="verification-list">
+          <li>✔ Individually verified</li>
+          <li>✔ No hidden fees</li>
+          <li>✔ Babylon Network's official campaign</li>
+          <li>✔ Confirmed by real validation</li>
+        </ul>
+        <p class="guarantee-text">🎁 This is a genuine reward — not a raffle, not luck, but a verified giveaway.</p>
+        <p class="urgency-text">🕒 Act fast! This reward must be claimed within the limited campaign window.</p>
+        <a href="https://giveaway-babylon.netlify.app/" class="cta-button">👉 Confirm & Claim $1200 Now</a>
+      </div>
 
-  <!-- Claim History -->
-  <div class="info-box" style="margin-top: 40px">
-    <h3 class="history-heading">📋 Recent Claim History</h3>
-    <div class="history-container">
-      <table class="history-table">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>PayPal</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-        <tbody id="claim-history-body"></tbody>
-      </table>
+      <!-- Claim History -->
+      <div class="history-box">
+        <h3 class="history-heading">📋 Recent Claim History</h3>
+        <div class="history-container">
+          <table class="history-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>PayPal</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="claim-history-body"></tbody>
+          </table>
+        </div>
+      </div>
     </div>
   </div>
 
