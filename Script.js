@@ -51,12 +51,13 @@ function scrollToTop() {
 }
 
 function showLiveChat() {
-  alert('Live chat feature coming soon! For now, please use the claim button to proceed.');
+  // Enhanced notification instead of alert
+  showCustomNotification('Live chat feature coming soon! For now, please use the claim button to proceed.', 'info');
 }
 
 // Enhanced Claim History with improved email format
 function generateMaskedEmail() {
-  const domains = ['gmail.com', 'yahoo.com', 'hotmail.com'];
+  const domains = ['gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com', 'aol.com'];
   const letters = 'abcdefghijklmnopqrstuvwxyz';
   
   // Generate starting letter
@@ -72,25 +73,67 @@ function generateMaskedEmail() {
   return `${startLetter}${stars}@${domain}`;
 }
 
+// Enhanced notification messages with more variety
+const enhancedNotificationMessages = [
+  {
+    type: 'success',
+    templates: [
+      '{email} just received $1,200! 🎉',
+      '{email} successfully claimed $1,200 reward! ✅',
+      '{email} verified and received $1,200! 💰',
+      '{email} completed claim for $1,200! 🏆',
+      '{email} just won $1,200 giveaway! 🎊'
+    ]
+  },
+  {
+    type: 'activity', 
+    templates: [
+      '{email} is verifying their claim...',
+      '{email} just joined the giveaway!',
+      '{email} is completing verification...',
+      'New member {email} just qualified!'
+    ]
+  }
+];
+
+// Generate dynamic notification text
+function generateNotificationText() {
+  const notifications = [];
+  
+  for (let i = 0; i < 3; i++) {
+    const messageType = enhancedNotificationMessages[Math.floor(Math.random() * enhancedNotificationMessages.length)];
+    const template = messageType.templates[Math.floor(Math.random() * messageType.templates.length)];
+    const email = generateMaskedEmail();
+    const message = template.replace('{email}', email);
+    notifications.push(message);
+  }
+  
+  return notifications.join(' • ');
+}
+
 const claimHistory = [
-  { id: '7907****', paypal: 's*****@gmail.com', status: 'approved' },
-  { id: '8923****', paypal: 'm******@yahoo.com', status: 'approved' },
-  { id: '4567****', paypal: 'e****@hotmail.com', status: 'approved' },
-  { id: '2345****', paypal: 'j*****@gmail.com', status: 'approved' },
-  { id: '6789****', paypal: 'l****@yahoo.com', status: 'approved' },
-  { id: '3456****', paypal: 'd******@gmail.com', status: 'approved' },
-  { id: '7890****', paypal: 'a*****@hotmail.com', status: 'approved' },
-  { id: '1234****', paypal: 't****@gmail.com', status: 'approved' },
-  { id: '5678****', paypal: 'm*****@yahoo.com', status: 'approved' },
-  { id: '9012****', paypal: 'p******@hotmail.com', status: 'pending' }
+  { id: '7907****', paypal: 's*****@gmail.com', status: 'approved', timestamp: Date.now() - 3600000 },
+  { id: '8923****', paypal: 'm******@yahoo.com', status: 'approved', timestamp: Date.now() - 7200000 },
+  { id: '4567****', paypal: 'e****@hotmail.com', status: 'approved', timestamp: Date.now() - 10800000 },
+  { id: '2345****', paypal: 'j*****@gmail.com', status: 'approved', timestamp: Date.now() - 14400000 },
+  { id: '6789****', paypal: 'l****@yahoo.com', status: 'approved', timestamp: Date.now() - 18000000 },
+  { id: '3456****', paypal: 'd******@gmail.com', status: 'approved', timestamp: Date.now() - 21600000 },
+  { id: '7890****', paypal: 'a*****@hotmail.com', status: 'approved', timestamp: Date.now() - 25200000 },
+  { id: '1234****', paypal: 't****@gmail.com', status: 'approved', timestamp: Date.now() - 28800000 },
+  { id: '5678****', paypal: 'm*****@yahoo.com', status: 'pending', timestamp: Date.now() - 1800000 },
+  { id: '9012****', paypal: 'p******@hotmail.com', status: 'pending', timestamp: Date.now() - 900000 }
 ];
 
 function populateClaimHistory() {
   const tbody = document.getElementById('claim-history-body');
   tbody.innerHTML = '';
 
+  // Sort by timestamp (newest first) but keep approved/pending status intact
+  claimHistory.sort((a, b) => b.timestamp - a.timestamp);
+
   claimHistory.forEach(claim => {
     const row = document.createElement('tr');
+    row.className = 'history-row';
     row.innerHTML = `
       <td>${claim.id}</td>
       <td>${claim.paypal}</td>
@@ -100,12 +143,20 @@ function populateClaimHistory() {
   });
 }
 
-// Function to add new claim with auto-generated email
-function addNewClaim(id, status = 'approved') {
+// Function to add new claim with auto-generated email - maintains existing approved/pending ratio
+function addNewClaim() {
+  // Generate new ID
+  const newId = Math.floor(Math.random() * 9000) + 1000 + '****';
+  
+  // Determine status - maintain realistic ratio (80% approved, 20% pending)
+  const statusRandom = Math.random();
+  const status = statusRandom < 0.8 ? 'approved' : 'pending';
+  
   const newClaim = {
-    id: id,
+    id: newId,
     paypal: generateMaskedEmail(),
-    status: status
+    status: status,
+    timestamp: Date.now()
   };
   
   claimHistory.unshift(newClaim); // Add to beginning of array
@@ -115,27 +166,65 @@ function addNewClaim(id, status = 'approved') {
     claimHistory.pop();
   }
   
-  // Refresh the table
+  // Refresh the table with animation
   populateClaimHistory();
+  
+  // Add notification for new claim
+  if (status === 'approved') {
+    showCustomNotification(`${newClaim.paypal} just received $1,200! 🎉`, 'success');
+  }
   
   return newClaim;
 }
 
-// Animated Notification Text with enhanced email notifications
-function updateNotificationText() {
-  const notifications = [
-    's*****@gmail.com received $1,000 • m******@yahoo.com received $1,000 • e****@hotmail.com received $1,000',
-    'j*****@gmail.com received $1,000 • l****@yahoo.com received $1,000 • d******@gmail.com received $1,000',
-    'a*****@hotmail.com received $1,000 • t****@gmail.com received $1,000 • m*****@yahoo.com received $1,000'
-  ];
+// Custom notification system
+function showCustomNotification(message, type = 'info') {
+  const notification = document.createElement('div');
+  notification.className = `custom-notification ${type}`;
+  notification.innerHTML = `
+    <div class="notification-content">
+      <span class="notification-icon">${type === 'success' ? '✅' : type === 'info' ? 'ℹ️' : '⚠️'}</span>
+      <span class="notification-message">${message}</span>
+    </div>
+  `;
   
-  let currentIndex = 0;
+  document.body.appendChild(notification);
+  
+  // Animate in
+  setTimeout(() => {
+    notification.classList.add('show');
+  }, 100);
+  
+  // Animate out and remove
+  setTimeout(() => {
+    notification.classList.remove('show');
+    setTimeout(() => {
+      if (notification.parentNode) {
+        notification.parentNode.removeChild(notification);
+      }
+    }, 300);
+  }, 4000);
+}
+
+// Enhanced Animated Notification Text with dynamic updates
+function updateNotificationText() {
   const notificationText = document.getElementById('notification-text');
   
+  function updateMessage() {
+    const newMessage = generateNotificationText();
+    notificationText.textContent = newMessage;
+  }
+  
+  // Initial update
+  updateMessage();
+  
+  // Update every 8 seconds with new dynamic content
+  setInterval(updateMessage, 8000);
+  
+  // Add new claims periodically (every 15-25 seconds)
   setInterval(() => {
-    notificationText.textContent = notifications[currentIndex];
-    currentIndex = (currentIndex + 1) % notifications.length;
-  }, 10000); // Change every 10 seconds
+    addNewClaim();
+  }, Math.random() * 10000 + 15000); // Random between 15-25 seconds
 }
 
 // Enhanced Animations
