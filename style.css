@@ -617,6 +617,20 @@ body {
   .notification-demo {
     padding: 20px 15px;
   }
+  
+  /* Mobile Logo Responsive Styles */
+  .logo-container {
+    padding: 20px 15px;
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  
+  .logo-image {
+    width: 90%;
+    max-width: 300px;
+    padding: 8px;
+  }
 }
 
 .container {
@@ -786,18 +800,25 @@ body {
 /* Logo Section */
 .logo-container {
   width: 100%;
-  padding: 20px 0;
-  margin-top: 20px; /* reduced top space */
+  padding: 30px 0;
+  margin-top: 30px;
   text-align: center;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  margin-bottom: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .logo-image {
-  width: 60%; /* make smaller */
-  max-width: 250px;
+  width: 80%; /* increased from 60% */
+  max-width: 400px; /* increased from 250px */
   height: auto;
   border-radius: 15px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
   transition: transform 0.3s ease;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 10px;
 }
 
 .logo-image:hover {
