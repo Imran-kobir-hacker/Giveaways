@@ -121,21 +121,120 @@ function addNewClaim(id, status = 'approved') {
   return newClaim;
 }
 
-// Animated Notification Text with enhanced email notifications
+// Enhanced Animated Notification Text with status changes
 function updateNotificationText() {
+  const notificationText = document.getElementById('notification-text');
+  let currentIndex = 0;
+  
+  // Enhanced notifications with different statuses
   const notifications = [
-    's*****@gmail.com received $1,000 • m******@yahoo.com received $1,000 • e****@hotmail.com received $1,000',
-    'j*****@gmail.com received $1,000 • l****@yahoo.com received $1,000 • d******@gmail.com received $1,000',
-    'a*****@hotmail.com received $1,000 • t****@gmail.com received $1,000 • m*****@yahoo.com received $1,000'
+    '✅ 7907**** APPROVED • 8923**** APPROVED • 4567**** APPROVED • 2345**** APPROVED',
+    '⏳ 6789**** PENDING • 3456**** APPROVED • 7890**** APPROVED • 1234**** APPROVED',
+    '✅ 5678**** APPROVED • 9012**** PENDING • 3456**** APPROVED • 7890**** APPROVED',
+    '⏳ 1234**** PENDING • 5678**** APPROVED • 9012**** PENDING • 3456**** APPROVED',
+    '✅ 7890**** APPROVED • 1234**** APPROVED • 5678**** PENDING • 9012**** APPROVED',
+    '⏳ 3456**** PENDING • 7890**** APPROVED • 1234**** APPROVED • 5678**** APPROVED',
+    '✅ 9012**** APPROVED • 3456**** APPROVED • 7890**** PENDING • 1234**** APPROVED',
+    '⏳ 5678**** PENDING • 9012**** APPROVED • 3456**** APPROVED • 7890**** APPROVED'
   ];
   
-  let currentIndex = 0;
-  const notificationText = document.getElementById('notification-text');
-  
+  // Change notification every 3-5 seconds
   setInterval(() => {
     notificationText.textContent = notifications[currentIndex];
+    const notificationBar = document.querySelector('.notification-bar');
+    
+    if (currentIndex % 2 === 0) {
+      // Approved status
+      notificationText.style.color = '#4CAF50';
+      notificationBar.classList.add('approved');
+      notificationBar.classList.remove('pending');
+      
+      // Add celebration effect
+      addCelebrationEffect();
+    } else {
+      // Pending status
+      notificationText.style.color = '#FF9800';
+      notificationBar.classList.add('pending');
+      notificationBar.classList.remove('approved');
+    }
+    
     currentIndex = (currentIndex + 1) % notifications.length;
-  }, 10000); // Change every 10 seconds
+  }, 4000); // Change every 4 seconds
+}
+
+// Add celebration effect when status changes to approved
+function addCelebrationEffect() {
+  const celebrationEmojis = ['🎉', '🎊', '🏆', '💎', '💰'];
+  const backgroundAnimation = document.querySelector('.background-animation');
+  
+  celebrationEmojis.forEach((emoji, index) => {
+    setTimeout(() => {
+      const celebration = document.createElement('div');
+      celebration.className = 'celebration-element';
+      celebration.textContent = emoji;
+      celebration.style.left = (20 + index * 15) + '%';
+      celebration.style.top = '50%';
+      backgroundAnimation.appendChild(celebration);
+      
+      setTimeout(() => {
+        if (celebration.parentNode) {
+          celebration.parentNode.removeChild(celebration);
+        }
+      }, 3000);
+    }, index * 200);
+  });
+}
+
+// Add dynamic background elements with cock/rooster theme
+function addDynamicBackgroundElements() {
+  const backgroundAnimation = document.querySelector('.background-animation');
+  
+  // Add cock/rooster emojis
+  for (let i = 0; i < 5; i++) {
+    const cockElement = document.createElement('div');
+    cockElement.className = 'cock-element';
+    cockElement.textContent = '🐓';
+    cockElement.style.left = Math.random() * 100 + '%';
+    cockElement.style.animationDelay = Math.random() * 10 + 's';
+    backgroundAnimation.appendChild(cockElement);
+  }
+  
+  // Add more animated elements
+  const additionalElements = ['🎯', '🏆', '💎', '💰', '🎊', '🎉', '⭐', '🌟'];
+  
+  additionalElements.forEach((emoji, index) => {
+    const element = document.createElement('div');
+    element.className = 'additional-element';
+    element.textContent = emoji;
+    element.style.left = (10 + index * 10) + '%';
+    element.style.animationDelay = (index * 2) + 's';
+    backgroundAnimation.appendChild(element);
+  });
+  
+  // Add dynamic sparkle effects
+  addSparkleEffects();
+}
+
+// Add sparkle effects to background
+function addSparkleEffects() {
+  const backgroundAnimation = document.querySelector('.background-animation');
+  
+  setInterval(() => {
+    const sparkle = document.createElement('div');
+    sparkle.className = 'sparkle';
+    sparkle.textContent = '✨';
+    sparkle.style.left = Math.random() * 100 + '%';
+    sparkle.style.top = Math.random() * 100 + '%';
+    sparkle.style.animationDuration = (Math.random() * 3 + 2) + 's';
+    backgroundAnimation.appendChild(sparkle);
+    
+    // Remove sparkle after animation
+    setTimeout(() => {
+      if (sparkle.parentNode) {
+        sparkle.parentNode.removeChild(sparkle);
+      }
+    }, 5000);
+  }, 2000);
 }
 
 // Enhanced Animations
@@ -259,6 +358,35 @@ function addCountdownPulse() {
   }, 1000);
 }
 
+// Add dynamic status changes to claim history
+function addDynamicStatusChanges() {
+  setInterval(() => {
+    // Randomly change some pending statuses to approved
+    const pendingClaims = claimHistory.filter(claim => claim.status === 'pending');
+    if (pendingClaims.length > 0) {
+      const randomPending = pendingClaims[Math.floor(Math.random() * pendingClaims.length)];
+      randomPending.status = 'approved';
+      populateClaimHistory();
+      
+      // Add visual feedback
+      const notificationText = document.getElementById('notification-text');
+      const originalText = notificationText.textContent;
+      notificationText.textContent = `🎉 ${randomPending.id} STATUS CHANGED TO APPROVED! 🎉`;
+      notificationText.style.color = '#4CAF50';
+      
+      setTimeout(() => {
+        notificationText.textContent = originalText;
+      }, 3000);
+    }
+    
+    // Add new pending claim occasionally
+    if (Math.random() < 0.3) {
+      const newId = Math.floor(Math.random() * 9000) + 1000;
+      addNewClaim(newId + '****', 'pending');
+    }
+  }, 8000); // Every 8 seconds
+}
+
 // Initialize all functions when page loads
 document.addEventListener('DOMContentLoaded', function() {
   // Start countdown timer
@@ -273,6 +401,9 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Update notification text
   updateNotificationText();
+  
+  // Add dynamic background elements
+  addDynamicBackgroundElements();
   
   // Add scroll animations
   addScrollAnimations();
@@ -294,6 +425,9 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Add countdown pulse
   addCountdownPulse();
+  
+  // Add dynamic status changes
+  addDynamicStatusChanges();
   
   // Add smooth scrolling for all internal links
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
