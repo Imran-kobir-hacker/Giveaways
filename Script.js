@@ -56,16 +56,16 @@ function showLiveChat() {
 
 // Enhanced Claim History
 const claimHistory = [
-  { id: '7907****', paypal: 'sarah.m@paypal.com', status: 'approved' },
-  { id: '8923****', paypal: 'mike.r@paypal.com', status: 'approved' },
-  { id: '4567****', paypal: 'emma.l@paypal.com', status: 'approved' },
-  { id: '2345****', paypal: 'john.d@paypal.com', status: 'approved' },
-  { id: '6789****', paypal: 'lisa.k@paypal.com', status: 'approved' },
-  { id: '3456****', paypal: 'david.w@paypal.com', status: 'approved' },
-  { id: '7890****', paypal: 'anna.b@paypal.com', status: 'approved' },
-  { id: '1234****', paypal: 'tom.h@paypal.com', status: 'approved' },
-  { id: '5678****', paypal: 'mary.j@paypal.com', status: 'approved' },
-  { id: '9012****', paypal: 'peter.s@paypal.com', status: 'pending' }
+  { id: '7907****', paypal: 's*****@gmail.com', status: 'approved' },
+  { id: '8923****', paypal: 'm*****@gmail.com', status: 'approved' },
+  { id: '4567****', paypal: 'e*****@gmail.com', status: 'approved' },
+  { id: '2345****', paypal: 'j*****@gmail.com', status: 'approved' },
+  { id: '6789****', paypal: 'l*****@gmail.com', status: 'approved' },
+  { id: '3456****', paypal: 'd*****@yahoo.com', status: 'approved' },
+  { id: '7890****', paypal: 'a*****@yahoo.com', status: 'approved' },
+  { id: '1234****', paypal: 't*****@hotmil.com', status: 'approved' },
+  { id: '5678****', paypal: 'm*****@hotmil.com', status: 'approved' },
+  { id: '9012****', paypal: 'p*****@yahoo.com', status: 'pending' }
 ];
 
 function populateClaimHistory() {
