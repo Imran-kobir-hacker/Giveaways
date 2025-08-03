@@ -713,11 +713,14 @@ body {
 }
 
 .logo-image {
-  width: 60%; /* make smaller */
-  max-width: 250px;
+  width: 80%; /* slightly larger for better readability */
+  max-width: 350px;
   height: auto;
+  /* Add a subtle background & padding so logo text isn't lost in the page gradient */
+  background: rgba(0, 0, 0, 0.4);
+  padding: 10px;
   border-radius: 15px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
   transition: transform 0.3s ease;
 }
 
