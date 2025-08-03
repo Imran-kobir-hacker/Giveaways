@@ -792,10 +792,11 @@ body {
 }
 
 .logo-image {
-  width: 60%; /* make smaller */
-  max-width: 250px;
+  width: 80%; /* increased from 60% for better visibility */
+  max-width: 350px; /* increased max width from 250px */
   height: auto;
-  border-radius: 15px;
+  border-radius: 0; /* removed rounding to avoid cutting text */
+  background: transparent; /* ensure background does not interfere with logo */
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
   transition: transform 0.3s ease;
 }
