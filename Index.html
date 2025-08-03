@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MegaPersonals Babylon Giveaway</title>
   <link rel="stylesheet" href="style.css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
   <!-- Animated Background -->
@@ -14,11 +15,24 @@
     <div class="balloon balloon3">🎈</div>
     <div class="balloon balloon4">🎊</div>
     <div class="balloon balloon5">🎉</div>
+    <div class="floating-icon floating-icon1">💎</div>
+    <div class="floating-icon floating-icon2">💰</div>
+    <div class="floating-icon floating-icon3">🏆</div>
   </div>
 
   <!-- Notification -->
   <div class="notification-bar">
-    <div id="notification-text">7907**** claim successful</div>
+    <div id="notification-text">7907**** claim successful • 8923**** claim successful • 4567**** claim successful • 2345**** claim successful</div>
+  </div>
+
+  <!-- Floating Action Buttons -->
+  <div class="floating-actions">
+    <button class="fab fab-primary" onclick="scrollToTop()">
+      <i class="fas fa-arrow-up"></i>
+    </button>
+    <button class="fab fab-secondary" onclick="showLiveChat()">
+      <i class="fas fa-comments"></i>
+    </button>
   </div>
 
   <div class="container">
@@ -32,6 +46,42 @@
       <!-- Headings -->
       <h2 class="main-title">MegaPersonals Babylon Network</h2>
       <div class="emoji-header">🎊 Congratulations! You've Been Chosen! 🎊</div>
+
+      <!-- Countdown Timer -->
+      <div class="countdown-container">
+        <h3 class="countdown-title">⏰ Campaign Ends In:</h3>
+        <div class="countdown-timer">
+          <div class="countdown-item">
+            <span id="hours">00</span>
+            <label>Hours</label>
+          </div>
+          <div class="countdown-separator">:</div>
+          <div class="countdown-item">
+            <span id="minutes">00</span>
+            <label>Minutes</label>
+          </div>
+          <div class="countdown-separator">:</div>
+          <div class="countdown-item">
+            <span id="seconds">00</span>
+            <label>Seconds</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Progress Bar -->
+      <div class="progress-container">
+        <div class="progress-header">
+          <span>🎯 Campaign Progress</span>
+          <span id="progress-text">47/50 Claims</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" id="progress-fill"></div>
+        </div>
+        <div class="progress-stats">
+          <span>✅ 47 Successfully Claimed</span>
+          <span>⏳ 3 Remaining</span>
+        </div>
+      </div>
 
       <!-- Info Box -->
       <div class="info-box">
@@ -51,6 +101,51 @@
         <a href="https://giveaway-babylon.netlify.app/" class="cta-button">👉 Confirm & Claim $1200 Now</a>
       </div>
 
+      <!-- Testimonials Section -->
+      <div class="testimonials-section">
+        <h3 class="testimonials-title">💬 What Winners Are Saying</h3>
+        <div class="testimonials-grid">
+          <div class="testimonial-card">
+            <div class="testimonial-header">
+              <div class="user-avatar">👤</div>
+              <div class="user-info">
+                <div class="user-name">Sarah M.</div>
+                <div class="user-location">New York, USA</div>
+              </div>
+              <div class="rating">⭐⭐⭐⭐⭐</div>
+            </div>
+            <p class="testimonial-text">"I couldn't believe it was real! Got my $1200 within 24 hours. MegaPersonals is legit!"</p>
+            <div class="testimonial-time">2 hours ago</div>
+          </div>
+          
+          <div class="testimonial-card">
+            <div class="testimonial-header">
+              <div class="user-avatar">👤</div>
+              <div class="user-info">
+                <div class="user-name">Mike R.</div>
+                <div class="user-location">Los Angeles, USA</div>
+              </div>
+              <div class="rating">⭐⭐⭐⭐⭐</div>
+            </div>
+            <p class="testimonial-text">"Fast and easy process. No hidden fees, exactly as promised. Thank you!"</p>
+            <div class="testimonial-time">5 hours ago</div>
+          </div>
+          
+          <div class="testimonial-card">
+            <div class="testimonial-header">
+              <div class="user-avatar">👤</div>
+              <div class="user-info">
+                <div class="user-name">Emma L.</div>
+                <div class="user-location">Chicago, USA</div>
+              </div>
+              <div class="rating">⭐⭐⭐⭐⭐</div>
+            </div>
+            <p class="testimonial-text">"Verified and secure. The whole process took less than 10 minutes!"</p>
+            <div class="testimonial-time">8 hours ago</div>
+          </div>
+        </div>
+      </div>
+
       <!-- Claim History -->
       <div class="history-box">
         <h3 class="history-heading">📋 Recent Claim History</h3>
@@ -65,6 +160,22 @@
             </thead>
             <tbody id="claim-history-body"></tbody>
           </table>
+        </div>
+      </div>
+
+      <!-- Trust Indicators -->
+      <div class="trust-indicators">
+        <div class="trust-item">
+          <i class="fas fa-shield-alt"></i>
+          <span>SSL Secured</span>
+        </div>
+        <div class="trust-item">
+          <i class="fas fa-lock"></i>
+          <span>100% Safe</span>
+        </div>
+        <div class="trust-item">
+          <i class="fas fa-check-circle"></i>
+          <span>Verified</span>
         </div>
       </div>
     </div>
