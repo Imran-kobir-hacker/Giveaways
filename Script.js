@@ -121,21 +121,57 @@ function addNewClaim(id, status = 'approved') {
   return newClaim;
 }
 
-// Animated Notification Text with enhanced email notifications
+// Utility functions to keep APPROVED and PENDING counts nearly equal and enrich visuals
+function getStatusCounts() {
+  return claimHistory.reduce(
+    (acc, claim) => {
+      acc[claim.status] = (acc[claim.status] || 0) + 1;
+      return acc;
+    },
+    { approved: 0, pending: 0 }
+  );
+}
+
+function getBalancedStatus() {
+  const counts = getStatusCounts();
+  return counts.approved > counts.pending ? 'pending' : 'approved';
+}
+
+function generateRandomPhoneId() {
+  return (Math.floor(1000 + Math.random() * 9000)).toString() + '****';
+}
+
+function autoAddNewClaim() {
+  const status = getBalancedStatus();
+  const id = generateRandomPhoneId();
+  addNewClaim(id, status);
+  updateNotificationText();
+}
+
+// Create twinkling stars for a shinier background
+function createStars(count = 60) {
+  const bg = document.querySelector('.background-animation');
+  if (!bg) return;
+  for (let i = 0; i < count; i++) {
+    const star = document.createElement('div');
+    star.className = 'star';
+    star.style.top = Math.random() * 100 + '%';
+    star.style.left = Math.random() * 100 + '%';
+    star.style.animationDelay = Math.random() * 5 + 's';
+    star.style.animationDuration = 2 + Math.random() * 3 + 's';
+    bg.appendChild(star);
+  }
+}
+
+// Overhauled notification updater to reflect real-time claim history
 function updateNotificationText() {
-  const notifications = [
-    's*****@gmail.com received $1,000 • m******@yahoo.com received $1,000 • e****@hotmail.com received $1,000',
-    'j*****@gmail.com received $1,000 • l****@yahoo.com received $1,000 • d******@gmail.com received $1,000',
-    'a*****@hotmail.com received $1,000 • t****@gmail.com received $1,000 • m*****@yahoo.com received $1,000'
-  ];
-  
-  let currentIndex = 0;
   const notificationText = document.getElementById('notification-text');
-  
-  setInterval(() => {
-    notificationText.textContent = notifications[currentIndex];
-    currentIndex = (currentIndex + 1) % notifications.length;
-  }, 10000); // Change every 10 seconds
+  if (!notificationText) return;
+  const items = claimHistory.slice(0, 4).map(claim => {
+    const msg = claim.status === 'approved' ? 'claim successful' : 'pending';
+    return `${claim.id} ${msg}`;
+  });
+  notificationText.textContent = items.join(' • ');
 }
 
 // Enhanced Animations
@@ -270,9 +306,14 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Populate claim history
   populateClaimHistory();
-  
-  // Update notification text
+
+  // Enhance background with sparkling stars
+  createStars();
+
+  // Initial notification text & intervals for dynamic updates
   updateNotificationText();
+  setInterval(updateNotificationText, 3000);
+  setInterval(autoAddNewClaim, 6000);
   
   // Add scroll animations
   addScrollAnimations();
