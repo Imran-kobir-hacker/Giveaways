@@ -1,3 +1,19 @@
+/*
+===============================================================
+Enhanced Notification System with MegaPersonals.eu Inspired Design
+===============================================================
+Features:
+- Beautiful gradient backgrounds with dark theme
+- Multiple notification types: success, info, warning, error
+- Animated sliding entrance from right
+- Pulse animations for important notifications
+- Hover effects and interactive close buttons
+- Mobile responsive design
+- MegaPersonals.eu inspired color scheme and styling
+- Shimmer and sparkle effects for premium feel
+===============================================================
+*/
+
 * {
   margin: 0;
   padding: 0;
@@ -213,35 +229,76 @@ body {
 /* Custom Notification System */
 .custom-notification {
   position: fixed;
-  top: 60px;
+  top: 70px;
   right: 20px;
-  background: rgba(0, 0, 0, 0.9);
-  border-radius: 10px;
-  padding: 15px 20px;
+  background: linear-gradient(135deg, 
+    rgba(20, 20, 30, 0.95), 
+    rgba(30, 30, 45, 0.92), 
+    rgba(40, 40, 60, 0.9));
+  border-radius: 15px;
+  padding: 18px 24px;
   color: white;
   z-index: 10000;
   transform: translateX(400px);
   opacity: 0;
-  transition: all 0.3s ease;
-  border-left: 4px solid #00d2d3;
-  backdrop-filter: blur(10px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-  max-width: 350px;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  backdrop-filter: blur(15px);
+  box-shadow: 
+    0 15px 35px rgba(0, 0, 0, 0.4),
+    0 5px 15px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  max-width: 380px;
+  min-width: 320px;
 }
 
 .custom-notification.success {
-  border-left-color: #00c853;
-  background: rgba(0, 200, 83, 0.1);
+  border-image: linear-gradient(45deg, #00c853, #4caf50, #66bb6a) 1;
+  background: linear-gradient(135deg, 
+    rgba(0, 200, 83, 0.15), 
+    rgba(76, 175, 80, 0.12), 
+    rgba(102, 187, 106, 0.1));
+  box-shadow: 
+    0 15px 35px rgba(0, 200, 83, 0.2),
+    0 5px 15px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 .custom-notification.info {
-  border-left-color: #2196f3;
-  background: rgba(33, 150, 243, 0.1);
+  border-image: linear-gradient(45deg, #2196f3, #42a5f5, #64b5f6) 1;
+  background: linear-gradient(135deg, 
+    rgba(33, 150, 243, 0.15), 
+    rgba(66, 165, 245, 0.12), 
+    rgba(100, 181, 246, 0.1));
+  box-shadow: 
+    0 15px 35px rgba(33, 150, 243, 0.2),
+    0 5px 15px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 .custom-notification.warning {
-  border-left-color: #ff9800;
-  background: rgba(255, 152, 0, 0.1);
+  border-image: linear-gradient(45deg, #ff9800, #ffa726, #ffb74d) 1;
+  background: linear-gradient(135deg, 
+    rgba(255, 152, 0, 0.15), 
+    rgba(255, 167, 38, 0.12), 
+    rgba(255, 183, 77, 0.1));
+  box-shadow: 
+    0 15px 35px rgba(255, 152, 0, 0.2),
+    0 5px 15px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.custom-notification.error {
+  border-image: linear-gradient(45deg, #f44336, #ef5350, #e57373) 1;
+  background: linear-gradient(135deg, 
+    rgba(244, 67, 54, 0.15), 
+    rgba(239, 83, 80, 0.12), 
+    rgba(229, 115, 115, 0.1));
+  box-shadow: 
+    0 15px 35px rgba(244, 67, 54, 0.2),
+    0 5px 15px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 .custom-notification.show {
@@ -252,17 +309,284 @@ body {
 .notification-content {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 15px;
 }
 
 .notification-icon {
-  font-size: 1.2em;
+  font-size: 1.4em;
   flex-shrink: 0;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .notification-message {
+  font-size: 1em;
+  line-height: 1.5;
+  font-weight: 500;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Notification Hover Effects */
+.custom-notification:hover {
+  transform: translateX(-5px) scale(1.02);
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.5),
+    0 8px 20px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+/* Notification Pulse Animation */
+@keyframes notificationPulse {
+  0%, 100% { 
+    box-shadow: 
+      0 15px 35px rgba(0, 0, 0, 0.4),
+      0 5px 15px rgba(0, 0, 0, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    transform: translateX(0) scale(1);
+  }
+  50% { 
+    box-shadow: 
+      0 20px 45px rgba(0, 0, 0, 0.5),
+      0 8px 20px rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    transform: translateX(0) scale(1.02);
+  }
+}
+
+/* Notification Slide In Animation */
+@keyframes slideInFromRight {
+  0% {
+    transform: translateX(400px) scale(0.8);
+    opacity: 0;
+  }
+  50% {
+    transform: translateX(-10px) scale(1.05);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateX(0) scale(1);
+    opacity: 1;
+  }
+}
+
+/* Enhanced notification show animation */
+.custom-notification.show {
+  animation: slideInFromRight 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+}
+
+.custom-notification.pulse {
+  animation: notificationPulse 2s ease-in-out infinite;
+}
+
+/* Notification Close Button */
+.notification-close {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  color: rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.notification-close:hover {
+  background: rgba(255, 255, 255, 0.3);
+  color: #fff;
+  transform: scale(1.1);
+}
+
+/* Enhanced Notification Bar with megapersonals.eu inspired styling */
+.notification-bar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(255, 255, 255, 0.05), 
+    transparent);
+  animation: shimmer 3s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.notification-bar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(1px 1px at 20px 15px, rgba(255, 255, 255, 0.15), transparent),
+    radial-gradient(1px 1px at 40px 25px, rgba(255, 255, 255, 0.1), transparent),
+    radial-gradient(1px 1px at 80px 35px, rgba(255, 255, 255, 0.12), transparent),
+    radial-gradient(1px 1px at 120px 20px, rgba(255, 255, 255, 0.08), transparent);
+  background-size: 150px 50px;
+  animation: sparkleMove 8s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes sparkleMove {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 100% 0%; }
+}
+
+@keyframes shimmer {
+  0%, 100% { transform: translateX(-100%); }
+  50% { transform: translateX(100%); }
+}
+
+/* Notification Demo Section Styling */
+.notification-demo {
+  background: linear-gradient(135deg, 
+    rgba(20, 20, 30, 0.9), 
+    rgba(30, 30, 45, 0.85), 
+    rgba(40, 40, 60, 0.8));
+  border-radius: 20px;
+  padding: 25px;
+  margin: 30px 0;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  backdrop-filter: blur(15px);
+  box-shadow: 
+    0 15px 35px rgba(0, 0, 0, 0.3),
+    0 5px 15px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.demo-title {
+  text-align: center;
+  font-size: 1.4em;
+  margin-bottom: 20px;
+  background: linear-gradient(45deg, #fff, #f0f8ff, #e6f3ff, #fff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
+}
+
+.demo-buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 15px;
+  justify-content: center;
+}
+
+.demo-btn {
+  background: linear-gradient(135deg, 
+    rgba(30, 30, 45, 0.9), 
+    rgba(40, 40, 60, 0.8));
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 12px 20px;
+  color: #fff;
   font-size: 0.9em;
-  line-height: 1.4;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  backdrop-filter: blur(10px);
+  box-shadow: 
+    0 8px 20px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.demo-btn:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 
+    0 12px 25px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.demo-btn:active {
+  transform: translateY(0) scale(1.02);
+}
+
+.success-btn:hover {
+  border-color: #00c853;
+  box-shadow: 
+    0 12px 25px rgba(0, 200, 83, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.info-btn:hover {
+  border-color: #2196f3;
+  box-shadow: 
+    0 12px 25px rgba(33, 150, 243, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.warning-btn:hover {
+  border-color: #ff9800;
+  box-shadow: 
+    0 12px 25px rgba(255, 152, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.error-btn:hover {
+  border-color: #f44336;
+  box-shadow: 
+    0 12px 25px rgba(244, 67, 54, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+/* Mobile Responsive Styles for Notifications */
+@media (max-width: 768px) {
+  .custom-notification {
+    right: 10px;
+    left: 10px;
+    max-width: none;
+    min-width: auto;
+    transform: translateY(-400px);
+    top: 60px;
+  }
+  
+  .custom-notification.show {
+    transform: translateY(0);
+  }
+  
+  .custom-notification:hover {
+    transform: translateY(-2px) scale(1.01);
+  }
+  
+  .notification-bar {
+    padding: 10px 8px;
+  }
+  
+  #notification-text {
+    font-size: 1em;
+  }
+  
+  .demo-buttons {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  
+  .demo-btn {
+    padding: 10px 15px;
+    font-size: 0.8em;
+  }
+  
+  .notification-demo {
+    padding: 20px 15px;
+    margin: 20px 0;
+  }
 }
 
 .container {
@@ -275,17 +599,25 @@ body {
 
 /* Enhanced Notification Bar */
 .notification-bar {
-  background: linear-gradient(45deg, rgba(0, 0, 0, 0.95), rgba(0, 78, 146, 0.8));
+  background: linear-gradient(135deg, 
+    rgba(16, 16, 16, 0.98), 
+    rgba(25, 25, 35, 0.95), 
+    rgba(35, 35, 55, 0.92),
+    rgba(45, 25, 65, 0.9));
   color: #fff;
-  padding: 12px;
+  padding: 15px 12px;
   text-align: center;
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 1000;
-  border-bottom: 2px solid rgba(255, 215, 0, 0.3);
-  backdrop-filter: blur(15px);
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+  border-bottom: 3px solid transparent;
+  border-image: linear-gradient(90deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4) 1;
+  backdrop-filter: blur(20px);
+  box-shadow: 
+    0 4px 25px rgba(0, 0, 0, 0.3),
+    0 2px 10px rgba(70, 130, 180, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 #notification-text {
@@ -293,8 +625,16 @@ body {
   animation: slideText 25s linear infinite;
   white-space: nowrap;
   padding-right: 100px;
-  font-weight: 500;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  font-weight: 600;
+  font-size: 1.1em;
+  background: linear-gradient(45deg, #fff, #f0f8ff, #e6f3ff, #fff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.3),
+    0 1px 2px rgba(0, 0, 0, 0.2);
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
 }
 
 @keyframes slideText {
