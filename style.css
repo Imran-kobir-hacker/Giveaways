@@ -5,11 +5,19 @@
   font-family: 'Arial', sans-serif;
 }
 
+:root {
+  --mega-dark: #242424; /* Dark background similar to MegaPersonals */
+  --mega-accent: #ff007f; /* Vibrant accent/pink */
+  --mega-light: #ffffff; /* Text/foreground */
+}
+
+/* === Updated Background (MegaPersonals style) === */
 body {
-  background: linear-gradient(135deg, #000428, #004e92, #667eea, #764ba2);
+  background: linear-gradient(135deg, #0f0f13, #1e1e23, #25262b, #30323a);
+  /* Retain animation properties */
   background-size: 400% 400%;
   animation: gradientShift 15s ease infinite;
-  color: #ffffff;
+  color: var(--mega-light);
   line-height: 1.6;
   min-height: 100vh;
   position: relative;
@@ -210,38 +218,32 @@ body {
   }
 }
 
-/* Custom Notification System */
+/* === Unified Custom Notification Style === */
 .custom-notification {
+  background: var(--mega-dark);
+  border-left: 4px solid var(--mega-accent);
+  color: var(--mega-light);
+  /* keep existing properties */
   position: fixed;
   top: 60px;
   right: 20px;
-  background: rgba(0, 0, 0, 0.9);
   border-radius: 10px;
   padding: 15px 20px;
-  color: white;
   z-index: 10000;
   transform: translateX(400px);
   opacity: 0;
   transition: all 0.3s ease;
-  border-left: 4px solid #00d2d3;
   backdrop-filter: blur(10px);
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
   max-width: 350px;
 }
 
-.custom-notification.success {
-  border-left-color: #00c853;
-  background: rgba(0, 200, 83, 0.1);
-}
-
-.custom-notification.info {
-  border-left-color: #2196f3;
-  background: rgba(33, 150, 243, 0.1);
-}
-
+/* Override type variations to keep single colour scheme */
+.custom-notification.success,
+.custom-notification.info,
 .custom-notification.warning {
-  border-left-color: #ff9800;
-  background: rgba(255, 152, 0, 0.1);
+  background: var(--mega-dark);
+  border-left-color: var(--mega-accent);
 }
 
 .custom-notification.show {
@@ -273,17 +275,17 @@ body {
   z-index: 1;
 }
 
-/* Enhanced Notification Bar */
+/* === Notification Bar (Top ticker) === */
 .notification-bar {
-  background: linear-gradient(45deg, rgba(0, 0, 0, 0.95), rgba(0, 78, 146, 0.8));
-  color: #fff;
+  background: linear-gradient(45deg, #1a1a1f, #2f3035);
+  color: var(--mega-light);
   padding: 12px;
   text-align: center;
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 1000;
-  border-bottom: 2px solid rgba(255, 215, 0, 0.3);
+  border-bottom: 2px solid rgba(255, 215, 0, 0.15);
   backdrop-filter: blur(15px);
   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
 }
