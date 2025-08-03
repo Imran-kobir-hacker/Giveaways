@@ -96,6 +96,30 @@ const enhancedNotificationMessages = [
   }
 ];
 
+// Enhanced notification bar functionality
+function updateNotificationBar() {
+  const notificationText = document.getElementById('notification-text');
+  const messages = [
+    '🎉 LIVE UPDATES: New winners claiming their $1,200 rewards every minute! 🚀',
+    '⚡ URGENT: Only 3 spots remaining! Don\'t miss your $1,200 reward! ⏰',
+    '🔥 HOT: 47 winners already claimed! Join them now for $1,200! 💰',
+    '🎊 BREAKING: MegaPersonals Babylon Network giveaway - $1,200 for you! 🏆',
+    '🚨 ALERT: Limited time offer - Claim your $1,200 before it\'s gone! ⚡',
+    '💎 EXCLUSIVE: You\'ve been selected for $1,200 reward! Act fast! 🎯'
+  ];
+  
+  let currentIndex = 0;
+  
+  setInterval(() => {
+    notificationText.style.opacity = '0';
+    setTimeout(() => {
+      notificationText.textContent = messages[currentIndex];
+      notificationText.style.opacity = '1';
+      currentIndex = (currentIndex + 1) % messages.length;
+    }, 500);
+  }, 8000); // Change message every 8 seconds
+}
+
 // Generate dynamic notification text
 function generateNotificationText() {
   const notifications = [];
@@ -362,6 +386,9 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Update notification text
   updateNotificationText();
+  
+  // Initialize enhanced notification bar
+  updateNotificationBar();
   
   // Add scroll animations
   addScrollAnimations();
