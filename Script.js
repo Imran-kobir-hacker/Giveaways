@@ -54,18 +54,35 @@ function showLiveChat() {
   alert('Live chat feature coming soon! For now, please use the claim button to proceed.');
 }
 
-// Enhanced Claim History
+// Enhanced Claim History with improved email format
+function generateMaskedEmail() {
+  const domains = ['gmail.com', 'yahoo.com', 'hotmail.com'];
+  const letters = 'abcdefghijklmnopqrstuvwxyz';
+  
+  // Generate starting letter
+  const startLetter = letters[Math.floor(Math.random() * letters.length)];
+  
+  // Generate random domain
+  const domain = domains[Math.floor(Math.random() * domains.length)];
+  
+  // Generate random number of stars (4-6)
+  const starCount = Math.floor(Math.random() * 3) + 4;
+  const stars = '*'.repeat(starCount);
+  
+  return `${startLetter}${stars}@${domain}`;
+}
+
 const claimHistory = [
-  { id: '7907****', paypal: 'sarah.m@paypal.com', status: 'approved' },
-  { id: '8923****', paypal: 'mike.r@paypal.com', status: 'approved' },
-  { id: '4567****', paypal: 'emma.l@paypal.com', status: 'approved' },
-  { id: '2345****', paypal: 'john.d@paypal.com', status: 'approved' },
-  { id: '6789****', paypal: 'lisa.k@paypal.com', status: 'approved' },
-  { id: '3456****', paypal: 'david.w@paypal.com', status: 'approved' },
-  { id: '7890****', paypal: 'anna.b@paypal.com', status: 'approved' },
-  { id: '1234****', paypal: 'tom.h@paypal.com', status: 'approved' },
-  { id: '5678****', paypal: 'mary.j@paypal.com', status: 'approved' },
-  { id: '9012****', paypal: 'peter.s@paypal.com', status: 'pending' }
+  { id: '7907****', paypal: 's*****@gmail.com', status: 'approved' },
+  { id: '8923****', paypal: 'm******@yahoo.com', status: 'approved' },
+  { id: '4567****', paypal: 'e****@hotmail.com', status: 'approved' },
+  { id: '2345****', paypal: 'j*****@gmail.com', status: 'approved' },
+  { id: '6789****', paypal: 'l****@yahoo.com', status: 'approved' },
+  { id: '3456****', paypal: 'd******@gmail.com', status: 'approved' },
+  { id: '7890****', paypal: 'a*****@hotmail.com', status: 'approved' },
+  { id: '1234****', paypal: 't****@gmail.com', status: 'approved' },
+  { id: '5678****', paypal: 'm*****@yahoo.com', status: 'approved' },
+  { id: '9012****', paypal: 'p******@hotmail.com', status: 'pending' }
 ];
 
 function populateClaimHistory() {
@@ -83,12 +100,33 @@ function populateClaimHistory() {
   });
 }
 
-// Animated Notification Text
+// Function to add new claim with auto-generated email
+function addNewClaim(id, status = 'approved') {
+  const newClaim = {
+    id: id,
+    paypal: generateMaskedEmail(),
+    status: status
+  };
+  
+  claimHistory.unshift(newClaim); // Add to beginning of array
+  
+  // Keep only last 10 claims to maintain performance
+  if (claimHistory.length > 10) {
+    claimHistory.pop();
+  }
+  
+  // Refresh the table
+  populateClaimHistory();
+  
+  return newClaim;
+}
+
+// Animated Notification Text with enhanced email notifications
 function updateNotificationText() {
   const notifications = [
-    '7907**** claim successful • 8923**** claim successful • 4567**** claim successful • 2345**** claim successful',
-    '6789**** claim successful • 3456**** claim successful • 7890**** claim successful • 1234**** claim successful',
-    '5678**** claim successful • 9012**** claim successful • 3456**** claim successful • 7890**** claim successful'
+    's*****@gmail.com received $1,000 • m******@yahoo.com received $1,000 • e****@hotmail.com received $1,000',
+    'j*****@gmail.com received $1,000 • l****@yahoo.com received $1,000 • d******@gmail.com received $1,000',
+    'a*****@hotmail.com received $1,000 • t****@gmail.com received $1,000 • m*****@yahoo.com received $1,000'
   ];
   
   let currentIndex = 0;
