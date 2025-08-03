@@ -12,6 +12,22 @@ body {
   min-height: 100vh;
   position: relative;
   overflow-x: hidden;
+  animation: backgroundShift 20s ease-in-out infinite;
+}
+
+@keyframes backgroundShift {
+  0%, 100% {
+    background: linear-gradient(135deg, #000428, #004e92);
+  }
+  25% {
+    background: linear-gradient(135deg, #1a0033, #330066);
+  }
+  50% {
+    background: linear-gradient(135deg, #003366, #0066cc);
+  }
+  75% {
+    background: linear-gradient(135deg, #330033, #660066);
+  }
 }
 
 /* Animated Background */
@@ -51,6 +67,44 @@ body {
 .floating-icon2 { left: 75%; animation-delay: 8s; }
 .floating-icon3 { left: 50%; animation-delay: 15s; }
 
+/* Cock/Rooster Elements */
+.cock-element {
+  position: absolute;
+  font-size: 3em;
+  animation: cockFloat 25s infinite;
+  opacity: 0.8;
+  filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5));
+}
+
+/* Additional Animated Elements */
+.additional-element {
+  position: absolute;
+  font-size: 2.2em;
+  animation: additionalFloat 18s infinite;
+  opacity: 0.7;
+}
+
+/* Sparkle Effects */
+.sparkle {
+  position: absolute;
+  font-size: 1.5em;
+  animation: sparkleEffect 5s ease-out forwards;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Celebration Effects */
+.celebration-element {
+  position: absolute;
+  font-size: 2.5em;
+  animation: celebrationFloat 3s ease-out forwards;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 15;
+  filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.8));
+}
+
 @keyframes float {
   0% {
     transform: translateY(100vh) rotate(0deg);
@@ -77,6 +131,86 @@ body {
   }
 }
 
+@keyframes cockFloat {
+  0% {
+    transform: translateY(100vh) translateX(0px) rotate(0deg) scale(1);
+    opacity: 0.8;
+  }
+  25% {
+    transform: translateY(75vh) translateX(30px) rotate(90deg) scale(1.2);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(50vh) translateX(-20px) rotate(180deg) scale(0.8);
+    opacity: 0.9;
+  }
+  75% {
+    transform: translateY(25vh) translateX(40px) rotate(270deg) scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100vh) translateX(0px) rotate(360deg) scale(1);
+    opacity: 0;
+  }
+}
+
+@keyframes additionalFloat {
+  0% {
+    transform: translateY(100vh) translateX(0px) rotate(0deg);
+    opacity: 0.7;
+  }
+  33% {
+    transform: translateY(66vh) translateX(25px) rotate(120deg);
+    opacity: 0.9;
+  }
+  66% {
+    transform: translateY(33vh) translateX(-15px) rotate(240deg);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-100vh) translateX(0px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes sparkleEffect {
+  0% {
+    transform: scale(0) rotate(0deg);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.5) rotate(180deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes celebrationFloat {
+  0% {
+    transform: translateY(0) scale(0) rotate(0deg);
+    opacity: 0;
+  }
+  25% {
+    transform: translateY(-20px) scale(1.2) rotate(90deg);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-40px) scale(1) rotate(180deg);
+    opacity: 0.8;
+  }
+  75% {
+    transform: translateY(-60px) scale(0.8) rotate(270deg);
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-80px) scale(0) rotate(360deg);
+    opacity: 0;
+  }
+}
+
 .container {
   max-width: 100%;
   margin: 0 auto;
@@ -96,6 +230,7 @@ body {
   width: 100%;
   z-index: 1000;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
 #notification-text {
@@ -103,6 +238,9 @@ body {
   animation: slideText 20s linear infinite;
   white-space: nowrap;
   padding-right: 50px;
+  font-weight: bold;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  transition: color 0.5s ease;
 }
 
 @keyframes slideText {
@@ -112,6 +250,15 @@ body {
   100% {
     transform: translateX(-100%);
   }
+}
+
+/* Notification status indicators */
+.notification-bar.approved {
+  background: linear-gradient(45deg, rgba(76, 175, 80, 0.9), rgba(76, 175, 80, 0.7));
+}
+
+.notification-bar.pending {
+  background: linear-gradient(45deg, rgba(255, 152, 0, 0.9), rgba(255, 152, 0, 0.7));
 }
 
 /* Floating Action Buttons */
@@ -525,16 +672,30 @@ body {
   border-radius: 15px;
   font-size: 0.8em;
   font-weight: bold;
+  animation: statusPulse 2s ease-in-out infinite;
 }
 
 .approved {
   background: rgba(0, 200, 83, 0.2);
   color: #00c853;
+  box-shadow: 0 0 10px rgba(0, 200, 83, 0.3);
 }
 
 .pending {
   background: rgba(255, 193, 7, 0.2);
   color: #ffc107;
+  box-shadow: 0 0 10px rgba(255, 193, 7, 0.3);
+}
+
+@keyframes statusPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.8;
+  }
 }
 
 /* Trust Indicators */
