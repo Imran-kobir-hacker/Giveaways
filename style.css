@@ -22,7 +22,8 @@ Features:
 }
 
 body {
-  background: linear-gradient(135deg, #000428, #004e92, #667eea, #764ba2);
+  /* Fresher vibrant gradient background */
+  background: linear-gradient(135deg, #ff00cc 0%, #333399 100%);
   background-size: 400% 400%;
   animation: gradientShift 15s ease infinite;
   color: #ffffff;
@@ -1260,4 +1261,23 @@ body {
     height: 45px;
     font-size: 16px;
   }
+}
+
+/* Top CTA button (moved higher) */
+.cta-button.top-cta {
+  width: auto;
+  max-width: 320px;
+  margin: 20px auto;
+  display: block;
+}
+
+/* Unified notification appearance (single color for all types) */
+.custom-notification,
+.custom-notification.success,
+.custom-notification.info,
+.custom-notification.warning,
+.custom-notification.error {
+  background: rgba(30, 30, 50, 0.95);
+  border-image: none;
+  border: 2px solid rgba(255, 255, 255, 0.1);
 }
